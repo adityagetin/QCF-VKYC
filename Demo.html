@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VKYC Process Wireframe</title>
+    <!-- 1. Include Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 2. A simple style to hide all screens by default */
+        .screen {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-200 font-sans">
+
+    <!-- DEMO CONTROLS: Helper to switch between screens -->
+    <div class="bg-black text-white p-2 text-center text-sm">
+        <span class="font-bold">DEMO CONTROLS:</span>
+        <button onclick="showScreen('finagg-admin-screen')" class="ml-2 underline">Finagg Admin</button>
+        <button onclick="showScreen('qcf-admin-screen-initiate')" class="ml-2 underline">QCF Admin (Pending)</button>
+        <button onclick="showScreen('customer-otp-screen')" class="ml-2 underline">Customer (Mobile)</button>
+    </div>
+
+    <!-- 
+      ======================================================================
+      SCREEN 1: FINAGG ADMIN PORTAL (Based on image (3).png)
+      Goal: Admin clicks "Send Docs to QCF"
+      ======================================================================
+    -->
+    <div id="finagg-admin-screen" class="screen">
+        <!-- Header (mimics image 3) -->
+        <header class="bg-white shadow p-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="h-8 w-auto text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2 2zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
+                <span class="ml-2 text-xl font-bold text-gray-700">FINAGG</span>
+            </div>
+            <div class="text-right">
+                <div class="font-semibold">Hi aditya.pal@finagg.in</div>
+                <div class="text-xs text-gray-500">Online - 0.55 Mbps</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-4">Case: VS FASHION</h1>
+            
+            <!-- Timeline (from image 4) -->
+            <div class="bg-white p-4 rounded-lg shadow mb-6">
+                <h2 class="text-lg font-semibold mb-4">Application Status</h2>
+                <div class="flex space-x-4 overflow-x-auto pb-4">
+                    <!-- Example steps -->
+                    <div class="text-center w-32 flex-shrink-0">
+                        <div class="bg-green-500 text-white rounded-full h-8 w-8 flex items-center justify-center mx-auto">✓</div>
+                        <div class="text-xs mt-1">PAN Upload</div>
+                    </div>
+                    <div class="text-center w-32 flex-shrink-0">
+                        <div class="bg-green-500 text-white rounded-full h-8 w-8 flex items-center justify-center mx-auto">✓</div>
+                        <div class="text-xs mt-1">GST Processing</div>
+                    </div>
+                    <div class="text-center w-32 flex-shrink-0">
+                        <div class="bg-green-500 text-white rounded-full h-8 w-8 flex items-center justify-center mx-auto">✓</div>
+                        <div class="text-xs mt-1">Bank Processing</div>
+                    </div>
+                    <div class="text-center w-32 flex-shrink-0">
+                        <div class="bg-green-500 text-white rounded-full h-8 w-8 flex items-center justify-center mx-auto">✓</div>
+                        <div class="text-xs mt-1">Approved</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Area (from image 3) -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-4">Action to be taken</h2>
+                <div class="flex space-x-3">
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium">Download Sanction Letter</button>
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium">Download DPN Form</button>
+                    <!-- THE KEY BUTTON -->
+                    <button id="finagg-send-to-qcf-btn" class="bg-green-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg hover:bg-green-700 transition">
+                        Send Docs to QCF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+      ======================================================================
+      SCREEN 2: QCF ADMIN PORTAL - "Initiate VKYC" (Based on image (2).png)
+      Goal: Show the new "Video KYC" status and "Initiate" button
+      ======================================================================
+    -->
+    <div id="qcf-admin-screen-initiate" class="screen">
+        <!-- Header (mimics image 2) -->
+        <header class="bg-white shadow p-4 flex justify-between items-center">
+             <div class="flex items-center">
+                <svg class="h-8 w-auto text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4a1 1 0 001 1h2a1 1 0 001-1V9a1 1 0 00-1-1h-2a1 1 0 00-1 1v6z"></path></svg>
+                <span class="ml-2 text-xl font-bold text-gray-700">QC Capital</span>
+            </div>
+            <div class="text-right">
+                <div class="font-semibold">Hi QCF Admin</div>
+                <div class="text-xs text-gray-500">Online - 0.17 Mbps</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="p-6 bg-gray-100 min-h-screen">
+            <!-- Case Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Company Name</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Application ID</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-900">Shyam kirana store</td>
+                            <td class="p-3 whitespace-nowrap text-sm text-gray-500">FA/25-26/100011</td>
+                            <td class="p-3 whitespace-nowrap text-sm font-semibold text-blue-600">Video KYC</td>
+                            <td class="p-3 whitespace-nowrap text-sm text-yellow-600">Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Action Area (NEW) -->
+            <div class="bg-white p-6 rounded-lg shadow mt-6">
+                <h2 class="text-lg font-semibold mb-4">Action Required</h2>
+                <div class="flex space-x-3">
+                    <!-- 
+                      This is the new button specified in the PRD (Req 4.5.1)
+                      It's shown when status is "Video KYC" and sub-status is "Pending" or "Rejected"
+                    -->
+                    <button id="qcf-initiate-btn" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold shadow-lg hover:bg-blue-700 transition">
+                        Initiate VKYC
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+      ======================================================================
+      SCREEN 3: QCF ADMIN PORTAL - "Review VKYC"
+      Goal: Show the "Accept" and "Reject" buttons after customer completes VKYC
+      ======================================================================
+    -->
+    <div id="qcf-admin-screen-review" class="screen">
+        <!-- Header (same as before) -->
+        <header class="bg-white shadow p-4 flex justify-between items-center">
+             <div class="flex items-center">
+                <svg class="h-8 w-auto text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4a1 1 0 001 1h2a1 1 0 001-1V9a1 1 0 00-1-1h-2a1 1 0 00-1 1v6z"></path></svg>
+                <span class="ml-2 text-xl font-bold text-gray-700">QC Capital</span>
+            </div>
+            <div class="text-right">
+                <div class="font-semibold">Hi QCF Admin</div>
+                <div class="text-xs text-gray-500">Online - 0.17 Mbps</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="p-6 bg-gray-100 min-h-screen">
+            <!-- Case Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Company Name</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Application ID</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-900">Shyam kirana store</td>
+                            <td class="p-3 whitespace-nowrap text-sm text-gray-500">FA/25-26/100011</td>
+                            <td class="p-3 whitespace-nowrap text-sm font-semibold text-blue-600">Video KYC</td>
+                            <!-- Status has updated based on PRD Req 4.4.1 & 4.5.3 -->
+                            <td class="p-3 whitespace-nowrap text-sm text-green-600">Completed (Pending Review)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Action Area (NEW) -->
+            <div class="bg-white p-6 rounded-lg shadow mt-6">
+                <h2 class="text-lg font-semibold mb-4">Review VKYC</h2>
+                <div class="flex space-x-3 items-center">
+                    <!-- New buttons as per PRD Req 4.5.3 -->
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-300">
+                        View VKYC Recording
+                    </button>
+                    <button id="qcf-accept-btn" class="bg-green-600 text-white px-5 py-2 rounded-lg font-bold shadow-lg hover:bg-green-700 transition">
+                        Accept VKYC
+                    </button>
+                    <button id="qcf-reject-btn" class="bg-red-600 text-white px-5 py-2 rounded-lg font-bold shadow-lg hover:bg-red-700 transition">
+                        Reject VKYC
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+      ======================================================================
+      SCREEN 4: QCF ADMIN PORTAL - "Create LAN"
+      Goal: Show the final "Create LAN" status after "Accept"
+      ======================================================================
+    -->
+    <div id="qcf-admin-screen-lan" class="screen">
+        <!-- Header (same as before) -->
+        <header class="bg-white shadow p-4 flex justify-between items-center">
+             <div class="flex items-center">
+                <svg class="h-8 w-auto text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4a1 1 0 001 1h2a1 1 0 001-1V9a1 1 0 00-1-1h-2a1 1 0 00-1 1v6z"></path></svg>
+                <span class="ml-2 text-xl font-bold text-gray-700">QC Capital</span>
+            </div>
+            <div class="text-right">
+                <div class="font-semibold">Hi QCF Admin</div>
+                <div class="text-xs text-gray-500">Online - 0.17 Mbps</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="p-6 bg-gray-100 min-h-screen">
+            <!-- Case Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Company Name</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Application ID</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                            <th class="p-3 text-left text-xs font-medium text-gray-500 uppercase">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-900">Shyam kirana store</td>
+                            <td class="p-3 whitespace-nowrap text-sm text-gray-500">FA/25-26/100011</td>
+                            <!-- Status updated to "Create LAN" as per PRD Req 4.5.4 -->
+                            <td class="p-3 whitespace-nowrap text-sm font-semibold text-green-600">Create LAN</td>
+                            <td class="p-3 whitespace-nowrap text-sm text-gray-500">VKYC Approved</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Action Area (FINAL) -->
+            <div class="bg-white p-6 rounded-lg shadow mt-6">
+                <h2 class="text-lg font-semibold mb-4">Final Loan Agreement</h2>
+                <div class="flex space-x-3 items-center">
+                    <button class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold shadow-lg hover:bg-blue-700 transition">
+                        Generate LAN
+                    </button>
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-300">
+                        Download Documents
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+      ======================================================================
+      MOBILE SCREENS: CUSTOMER FLOW
+      These are contained in a mobile-sized container
+      ======================================================================
+    -->
+    <div class="w-full flex justify-center py-10">
+        <div class="w-full max-w-sm bg-white rounded-lg shadow-xl overflow-hidden">
+            
+            <!-- SCREEN 5: CUSTOMER - OTP -->
+            <div id="customer-otp-screen" class="screen p-6">
+                <div class="flex justify-center mb-6">
+                    <!-- Placeholder for New Logo (PRD Req 4.6.1) -->
+                    <svg class="h-10 w-auto text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2 2zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
+                </div>
+                <h2 class="text-xl font-bold text-center mb-2">Video KYC Verification</h2>
+                <p class="text-gray-600 text-center text-sm mb-6">To begin, please verify your mobile number.</p>
+                
+                <div>
+                    <label class="text-sm font-medium text-gray-700">Mobile Number</label>
+                    <div class="mt-1">
+                        <input type="text" value="+91 XXXXXX1234" disabled class="w-full p-3 bg-gray-100 rounded-lg border border-gray-300">
+                    </div>
+                </div>
+
+                <!-- OTP button (PRD Req 4.3.2) -->
+                <button id="customer-send-otp-btn" class="w-full bg-blue-600 text-white p-3 rounded-lg font-bold mt-6 hover:bg-blue-700">
+                    Send OTP
+                </button>
+
+                <!-- OTP Input (hidden initially) -->
+                <div id="otp-input-section" class="hidden mt-6">
+                    <label class="text-sm font-medium text-gray-700">Enter 6-digit OTP</label>
+                    <input type="text" maxlength="6" class="w-full p-3 text-center text-lg tracking-[.5em] rounded-lg border border-gray-300 mt-1">
+                    
+                    <!-- Verify button (PRD Req 4.3.3) -->
+                    <button id="customer-verify-otp-btn" class="w-full bg-green-600 text-white p-3 rounded-lg font-bold mt-4 hover:bg-green-700">
+                        Verify & Start VKYC
+                    </button>
+                </div>
+            </div>
+
+            <!-- SCREEN 6: CUSTOMER - VIDEO CALL -->
+            <div id="customer-video-screen" class="screen">
+                <div class="relative bg-black" style="height: 600px;">
+                    <!-- Placeholder for Agent's Video -->
+                    <div class="absolute top-4 right-4 w-28 h-36 bg-gray-700 border-2 border-white rounded-lg flex items-center justify-center">
+                        <span class="text-white text-xs text-center">Agent Video</span>
+                    </div>
+                    
+                    <!-- Placeholder for Customer's Video -->
+                    <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <span class="text-white text-lg">Your Video</span>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-6">
+                        <button class="bg-gray-600 bg-opacity-50 text-white h-14 w-14 rounded-full flex items-center justify-center">
+                            <!-- Mic icon -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        </button>
+                        <button id="customer-end-call-btn" class="bg-red-600 text-white h-14 w-14 rounded-full flex items-center justify-center shadow-lg">
+                            <!-- Phone icon -->
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M3.707 3.293a1 1 0 00-1.414 1.414L10.586 12 2.293 20.293a1 1 0 001.414 1.414L12 13.414l8.293 8.293a1 1 0 001.414-1.414L13.414 12l8.293-8.293a1 1 0 00-1.414-1.414L12 10.586 3.707 3.293z"></path></svg>
+                        </button>
+                        <button class="bg-gray-600 bg-opacity-50 text-white h-14 w-14 rounded-full flex items-center justify-center">
+                            <!-- Video icon -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 8h11a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCREEN 7: CUSTOMER - COMPLETE -->
+            <div id="customer-complete-screen" class="screen p-8 flex flex-col items-center justify-center" style="height: 600px;">
+                <!-- Success icon -->
+                <svg class="w-20 h-20 text-green-500 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h2 class="text-2xl font-bold text-center mb-2">VKYC Submitted</h2>
+                <p class="text-gray-600 text-center text-sm mb-8">
+                    Thank you. Your Video KYC has been successfully completed and submitted for review. You may now close this window.
+                </p>
+                <button id="customer-close-btn" class="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+      ======================================================================
+      3. JAVASCRIPT for interactivity
+      ======================================================================
+    -->
+    <script>
+        // Function to show a specific screen and hide others
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.style.display = 'none';
+            });
+            
+            // Show the target screen
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.style.display = 'block';
+            }
+        }
+
+        // --- Define the flow ---
+
+        // 1. Finagg Admin: Clicks "Send Docs to QCF"
+        document.getElementById('finagg-send-to-qcf-btn').addEventListener('click', () => {
+            // As per PRD, this moves the case to QCF portal in "Video KYC" (Pending) state
+            showScreen('qcf-admin-screen-initiate');
+        });
+
+        // 2. QCF Admin: Clicks "Initiate VKYC"
+        document.getElementById('qcf-initiate-btn').addEventListener('click', () => {
+            // This triggers the flow for the customer (PRD Req 4.5.2)
+            // We simulate this by showing the customer's mobile view
+            showScreen('customer-otp-screen');
+        });
+
+        // 3. Customer: Clicks "Send OTP"
+        document.getElementById('customer-send-otp-btn').addEventListener('click', () => {
+            // This just shows the OTP input field in the demo
+            document.getElementById('otp-input-section').style.display = 'block';
+        });
+
+        // 4. Customer: Clicks "Verify & Start VKYC"
+        document.getElementById('customer-verify-otp-btn').addEventListener('click', () => {
+            // After OTP, customer moves to video call (PRD Req 4.3.3)
+            showScreen('customer-video-screen');
+        });
+
+        // 5. Customer: Clicks "End Call"
+        document.getElementById('customer-end-call-btn').addEventListener('click', () => {
+            // Customer finishes the call
+            showScreen('customer-complete-screen');
+        });
+
+        // 6. Customer: Clicks "Close" on success screen
+        document.getElementById('customer-close-btn').addEventListener('click', () => {
+            // The VKYC Node app automatically updates the status (PRD Req 4.4.1)
+            // We simulate this by moving the QCF admin to the "Review" state
+            showScreen('qcf-admin-screen-review');
+        });
+
+        // 7. QCF Admin: Clicks "Accept VKYC"
+        document.getElementById('qcf-accept-btn').addEventListener('click', () => {
+            // This moves the case to "Create LAN" (PRD Req 4.5.4)
+            showScreen('qcf-admin-screen-lan');
+        });
+
+        // 8. QCF Admin: Clicks "Reject VKYC"
+        document.getElementById('qcf-reject-btn').addEventListener('click', () => {
+            // This sets status to "Rejected" (PRD Req 4.5.6)
+            // and allows for re-initiation (PRD Flowchart)
+            showScreen('qcf-admin-screen-initiate');
+            // In a real app, you'd update the remark to "Rejected"
+        });
+
+
+        // --- Initial State ---
+        // Show the first screen (Finagg Admin) on page load
+        showScreen('finagg-admin-screen');
+    </script>
+
+</body>
+</html>
